@@ -250,7 +250,7 @@
   left: 50%; /* Ortalamak için */
   transform: translateX(-50%); /* Ortalamak için */
   bottom: 0;
-  width: 700px; /* Çizginin genişliği */
+  width: 300px; /* Çizginin genişliği */
   height: 4px; /* Çizginin kalınlığı */
   background-color: #FF6F00; /* Vurgu rengi */
   border-radius: 2px; /* Köşeleri yuvarla */
