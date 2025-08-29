@@ -4,7 +4,7 @@
       <v-container class="d-flex justify-center py-1">
         <span class="text-subtitle-2 font-weight-bold">
           <v-icon class="mr-2" size="small">mdi-truck-fast</v-icon>
-          2500 TL ve Üzeri Siparişlerinizde KARGO ÜCRETSİZ!
+          2500 TL ve Üzeri Siparişlerinizde KARGO ÜCRETSİZ! İPNE SAMET
         </span>
       </v-container>
     </v-system-bar>
