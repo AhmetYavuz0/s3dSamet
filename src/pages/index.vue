@@ -139,11 +139,11 @@
 
   const router = useRouter()
 
-  // Öne çıkan tişörtler için örnek veri (öncekiyle aynı kaldı)
+  // Öne çıkan ler için örnek veri (öncekiyle aynı kaldı)
   const featuredTshirts = ref([
     {
       id: 1,
-      name: 'Grafik Tasarım Tişörtü',
+      name: 'Grafik Tasarım',
       category: 'Erkek',
       price: '249.90',
       image: 'https://i.imgur.com/7IUW1bi.jpeg', // Güncellenmiş resim linki
@@ -151,7 +151,7 @@
     },
     {
       id: 2,
-      name: 'Minimal Desen Tişörtü',
+      name: 'Minimal Desen',
       category: 'Kadın',
       price: '219.90',
       image: 'https://i.imgur.com/d9jY4nE.jpeg', // Güncellenmiş resim linki
@@ -159,7 +159,7 @@
     },
     {
       id: 3,
-      name: 'Soyut Sanat Tişörtü',
+      name: 'Soyut Sanat',
       category: 'Unisex',
       price: '279.90',
       image: 'https://i.imgur.com/E5J01Lw.jpeg', // Güncellenmiş resim linki
@@ -167,7 +167,7 @@
     },
     {
       id: 4,
-      name: 'Şehir Manzarası Tişörtü',
+      name: 'Şehir Manzarası',
       category: 'Erkek',
       price: '239.90',
       image: 'https://i.imgur.com/rM1iC5l.jpeg', // Güncellenmiş resim linki
@@ -175,11 +175,11 @@
     },
   ])
 
-  // Yeni Gelen Tişörtler için örnek veri
+  // Yeni Gelen ler için örnek veri
   const newArrivalTshirts = ref([
     {
       id: 7,
-      name: 'Anime Temalı Tişört',
+      name: 'Anime Temalı ',
       category: 'Unisex',
       price: '289.90',
       image: 'https://i.imgur.com/y1vO0xO.jpeg',
@@ -187,7 +187,7 @@
     },
     {
       id: 8,
-      name: 'Geometrik Desen Tişörtü',
+      name: 'Geometrik Desen',
       category: 'Erkek',
       price: '259.90',
       image: 'https://i.imgur.com/Z4w0M0n.jpeg',
@@ -195,7 +195,7 @@
     },
     {
       id: 9,
-      name: 'Doğa Çizimli Tişört',
+      name: 'Doğa Çizimli',
       category: 'Kadın',
       price: '229.90',
       image: 'https://i.imgur.com/V7R3h9B.jpeg',
@@ -203,7 +203,7 @@
     },
     {
       id: 10,
-      name: 'Pop Art Tişörtü',
+      name: 'Pop Art',
       category: 'Unisex',
       price: '299.90',
       image: 'https://i.imgur.com/L3r0kQy.jpeg',
@@ -211,7 +211,7 @@
     },
     {
       id: 11,
-      name: 'Uzay Temalı Tişört',
+      name: 'Uzay Temalı',
       category: 'Unisex',
       price: '319.90',
       image: 'https://i.imgur.com/cE0124g.jpeg',
@@ -219,7 +219,7 @@
     },
     {
       id: 12,
-      name: 'Retro Oyun Tişörtü',
+      name: 'Retro Oyun',
       category: 'Erkek',
       price: '279.90',
       image: 'https://i.imgur.com/qU3g15F.jpeg',
@@ -227,7 +227,7 @@
     },
     {
       id: 13,
-      name: 'Minimalist Çizgi Tişörtü',
+      name: 'Minimalist Çizgi',
       category: 'Kadın',
       price: '209.90',
       image: 'https://i.imgur.com/Gj3H0Qc.jpeg',
