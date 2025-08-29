@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-system-bar class="text-black" color="#C8F2FA">
+    <v-system-bar class="text-black mb-14 position-fixed" color="#4ECDC4">
       <v-container class="d-flex justify-center py-1">
         <span class="text-subtitle-2 font-weight-bold">
           <v-icon class="mr-2" size="small">mdi-truck-fast</v-icon>
@@ -9,7 +9,12 @@
       </v-container>
     </v-system-bar>
 
-    <v-app-bar app color="white" dark>
+    <v-app-bar
+      app
+      class="top-10 position-fixed"
+      color="#F7EFE4"
+      dark
+    >
       <v-container class="d-flex align-center py-0">
         <v-img
           alt="Şirket Logosu"
@@ -116,7 +121,7 @@
       </v-container>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" color="#C8F2FA" temporary>
+    <v-navigation-drawer v-model="drawer" class="position-fixed" color="#4ECDC4" temporary>
       <v-list nav>
         <v-list-item link to="/">
           <v-list-item-title>Anasayfa</v-list-item-title>

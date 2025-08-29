@@ -1,5 +1,5 @@
 <template>
-  <v-container class="pa-0" fluid>
+  <v-container class="pa-0" fluid style="background-color: #F7EFE4;">
     <v-sheet
       class="d-flex align-center justify-center flex-column text-white position-relative"
       color="#1A2F4B"
@@ -33,8 +33,8 @@
     </v-sheet>
 
     <v-container class="my-10">
-      <h2 class="text-h4 text-center mb-8 font-weight-bold text--darken-4">
-        Öne Çıkan Tişörtler
+      <h2 class="text-h4 text-center mb-8 font-weight-bold featured-tshirts-title-line">
+        Öne Çıkan Ürünler
       </h2>
       <v-row justify="center">
         <v-col
@@ -64,15 +64,15 @@
         </v-col>
       </v-row>
       <div class="text-center mt-8">
-        <v-btn color="#1A2F4B" size="large" to="/3dall" variant="outlined">
+        <v-btn color="#D26E24" size="large" to="/3dall" variant="flat">
           Tüm Ürünleri Görüntüle
           <v-icon class="ml-2" right>mdi-chevron-right</v-icon>
         </v-btn>
       </div>
     </v-container>
 
-    <v-sheet class="py-10" color="#F5F5F5">
-      <v-container>
+    <v-sheet>
+      <v-container class="py-10" fluid style="background-color: #F7EFE4;">
         <h2 class="text-h4 text-center mb-8 font-weight-bold text--darken-4">
           Yeni Gelen Ürünler
         </h2>
@@ -109,14 +109,14 @@
           </template>
 
           <v-slide-group-item v-for="tshirt in newArrivalTshirts" :key="tshirt.id">
-            <v-card class="mx-3 rounded-lg elevation-2 hover-lift" :to="tshirt.link" width="280">
+            <v-card class="mx-3 rounded-lg elevation-2 hover-lift " :to="tshirt.link" width="280">
               <v-img
                 :alt="tshirt.name"
                 cover
                 height="250px"
                 :src="tshirt.image"
               />
-              <v-card-title class="font-weight-medium">{{ tshirt.name }}</v-card-title>
+              <v-card-title class="font-weight-medium bg">{{ tshirt.name }}</v-card-title>
               <v-card-subtitle class="text-caption text-grey-darken-1">{{ tshirt.category }}</v-card-subtitle>
               <v-card-text class="d-flex justify-space-between align-center">
                 <span class="text-h6 font-weight-bold text-orange-darken-3">{{ tshirt.price }} TL</span>
@@ -237,6 +237,25 @@
 </script>
 
 <style scoped>
+.featured-tshirts-title-line {
+  position: relative;
+  padding-bottom: 10px; /* Çizgi ile yazı arasına boşluk */
+  color: #1A2F4B !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Hafif gölgeyi koru */
+}
+
+.featured-tshirts-title-line::after {
+  content: '';
+  position: absolute;
+  left: 50%; /* Ortalamak için */
+  transform: translateX(-50%); /* Ortalamak için */
+  bottom: 0;
+  width: 700px; /* Çizginin genişliği */
+  height: 4px; /* Çizginin kalınlığı */
+  background-color: #FF6F00; /* Vurgu rengi */
+  border-radius: 2px; /* Köşeleri yuvarla */
+}
+
 /* Daha modern ve hafif bir metin gölgesi */
 .text-shadow-subtle {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
