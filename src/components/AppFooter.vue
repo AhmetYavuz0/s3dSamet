@@ -41,15 +41,15 @@
           <div class="d-flex flex-column">
             <p class="text-subtitle-2 text-md-left mb-1">
               <v-icon color="black" size="18" start>mdi-email</v-icon>
-              Email: info@marka.com
+              <a href="mailto:s3dbaskitasarim@gmail.com" style="color: inherit; text-decoration: none;">
+                s3dbaskitasarim@gmail.com
+              </a>
             </p>
             <p class="text-subtitle-2 text-md-left mb-1">
               <v-icon color="black" size="18" start>mdi-phone</v-icon>
-              Telefon: +90 555 123 45 67
-            </p>
-            <p class="text-subtitle-2 text-md-left mb-1">
-              <v-icon color="black" size="18" start>mdi-map-marker</v-icon>
-              Adres: Örnek Cad. No: 123, İstanbul
+              <a href="tel:+905443408473" style="color: inherit; text-decoration: none;">
+                +90 544 340 84 73
+              </a>
             </p>
           </div>
           <div class="d-flex ga-2 justify-center justify-md-start mt-4">
@@ -72,8 +72,18 @@
       <v-divider class="my-6" color="white" />
 
       <v-row>
-        <v-col class="text-center text-body-2 text-black" cols="12">
-          &copy; {{ new Date().getFullYear() }} MARKA ADI. Tüm Hakları Saklıdır.
+        <v-col>
+          <v-container class="fill-height d-flex justify-center align-center">
+            <v-img
+              alt="Ortalı resim"
+              class="rounded-lg"
+              max-width="400"
+              src="https://i.imgur.com/GQZDO1J.png"
+            />
+          </v-container>
+        </v-col>
+        <v-col class="text-center text-body-2 text-black font-weight-bold" cols="12">
+          &copy; {{ new Date().getFullYear() }} S3D BASKI TASARIM. Tüm Hakları Saklıdır.
         </v-col>
       </v-row>
     </v-container>
@@ -85,22 +95,18 @@
   import { useRouter } from 'vue-router'
 
   const router = useRouter()
-  function gotologin () {
-    router.push('/login')
-  }
 
   const quickLinks = ref([
     { title: 'Hakkımızda', to: '/about' },
-    { title: 'Kariyer', to: '/careers' },
+    { title: 'Mesafeli Satış Sözleşmesi', to: '/sellinginfo' },
+    { title: 'İptal ve İade Şartları', to: '/return' },
     { title: 'Sıkça Sorulan Sorular', to: '/faq' },
     { title: 'Gizlilik Politikası', to: '/privacy' },
   ])
 
   const socialIcons = ref([
-    { name: 'facebook', icon: 'mdi-facebook', link: '#' },
-    { name: 'twitter', icon: 'mdi-twitter', link: '#' },
-    { name: 'instagram', icon: 'mdi-instagram', link: '#' },
-    { name: 'tiktok', icon: 'mdi-music-note-outline', link: '#' },
+    { name: 'instagram', icon: 'mdi-instagram', link: 'https://www.instagram.com/s3dbaskitasarim/' },
+    { name: 'tiktok', icon: 'mdi-music-note-outline', link: 'https://www.tiktok.com/@s3dbaskitasarim' },
   ])
 
   const goToHome = () => {

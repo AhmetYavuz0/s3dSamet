@@ -73,7 +73,7 @@
 
     <v-sheet>
       <v-container class="py-10" fluid style="background-color: #F7EFE4;">
-        <h2 class="text-h4 text-center mb-8 font-weight-bold text--darken-4">
+        <h2 class="text-h4 text-center mb-8 font-weight-bold featured-tshirts-title-line">
           Yeni Gelen Ürünler
         </h2>
         <v-slide-group

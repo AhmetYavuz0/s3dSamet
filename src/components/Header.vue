@@ -124,21 +124,25 @@
     <v-navigation-drawer v-model="drawer" class="position-fixed" color="#4ECDC4" temporary>
       <v-list nav>
         <v-list-item link to="/">
-          <v-list-item-title>Anasayfa</v-list-item-title>
+          <v-list-item-title class="font-weight-bold">Anasayfa</v-list-item-title>
         </v-list-item>
 
         <v-list-item link to="/printers">
-          <v-list-item-title>3D Yazıcılar</v-list-item-title>
+          <v-list-item-title class="font-weight-bold">3D Yazıcılar</v-list-item-title>
         </v-list-item>
 
         <v-list-group value="Filamentler">
           <template #activator="{ props }">
-            <v-list-item
-              v-bind="props"
-              title="Filamentler"
-            />
+            <v-list-item v-bind="props">
+              <template #title>
+                <span class="font-weight-bold">Filamentler</span>
+              </template>
+            </v-list-item>
           </template>
+
           <v-list-item title="PLA Filamentler" to="/products/filamentler/pla" />
+          <v-list-item title="PLA+ Filamentler" to="/products/filamentler/plaplus" />
+          <v-list-item title="TPU Filamentler" to="/products/filamentler/tpu" />
           <v-list-item title="ABS Filamentler" to="/products/filamentler/abs" />
           <v-list-item title="PETG Filamentler" to="/products/filamentler/petg" />
           <v-list-item title="Tüm Filamentler" to="/products/filamentler" />
@@ -146,16 +150,19 @@
 
         <v-list-group value="3DBaskilar">
           <template #activator="{ props }">
-            <v-list-item
-              v-bind="props"
-              title="3D Baskılar"
-            />
+            <v-list-item v-bind="props">
+              <template #title>
+                <span class="font-weight-bold">3D Baskılar</span>
+              </template>
+            </v-list-item>
           </template>
+
           <v-list-item title="Model & Figür" to="/products/3d-baskilar/model-figur" />
           <v-list-item title="Aksesuar" to="/products/3d-baskilar/aksesuar" />
           <v-list-item title="Yedek Parça" to="/products/3d-baskilar/yedek-parca" />
           <v-list-item title="Tüm 3D Baskılar" to="/products/3d-baskilar" />
         </v-list-group>
+
 
         <v-divider />
 
@@ -163,7 +170,7 @@
           <template #prepend>
             <v-icon>mdi-cart</v-icon>
           </template>
-          <v-list-item-title>Sepetim ({{ cartItemCount }})</v-list-item-title>
+          <v-list-item-title class="font-weight-bold">Sepetim ({{ cartItemCount }})</v-list-item-title>
         </v-list-item>
 
       </v-list>
