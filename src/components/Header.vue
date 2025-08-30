@@ -2,10 +2,10 @@
   <v-app>
     <v-system-bar class="text-black mb-14 position-fixed" color="#4ECDC4">
       <v-container class="d-flex justify-center py-1">
-    <span class="text-subtitle font-weight-bold shipping-message">
-      <v-icon class="mr-2" size="small">mdi-truck-fast</v-icon>
-      2500 TL ve Üzeri Siparişlerinizde KARGO ÜCRETSİZ!
-    </span>
+        <span class="text-subtitle font-weight-bold shipping-message">
+          <v-icon class="mr-2" size="small">mdi-truck-fast</v-icon>
+          2500 TL ve Üzeri Siparişlerinizde KARGO ÜCRETSİZ!
+        </span>
       </v-container>
     </v-system-bar>
 

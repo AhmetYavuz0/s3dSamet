@@ -71,73 +71,113 @@
       </div>
     </v-container>
 
-    <v-sheet>
+    <v-sheet class="mx-auto" max-width="2000">
       <v-container class="py-10" fluid style="background-color: #F7EFE4;">
         <h2 class="text-h4 text-center mb-8 font-weight-bold featured-tshirts-title-line">
-          Yeni Gelen Ürünler
+          Yeni Çıkan Ürünler
         </h2>
-        <v-slide-group
-          center-active
-          class="pa-4"
-          show-arrows
-        >
-          <template #prev="{ isPrevDisabled, onClick }">
-            <v-btn
-              class="mx-2"
-              color="#1A2F4B"
-              :disabled="isPrevDisabled"
-              icon
-              size="large"
-              variant="flat"
-              @click="onClick"
-            >
-              <v-icon>mdi-chevron-left</v-icon>
-            </v-btn>
-          </template>
-          <template #next="{ isNextDisabled, onClick }">
-            <v-btn
-              class="mx-2"
-              color="#1A2F4B"
-              :disabled="isNextDisabled"
-              icon
-              size="large"
-              variant="flat"
-              @click="onClick"
-            >
-              <v-icon>mdi-chevron-right</v-icon>
-            </v-btn>
-          </template>
 
-          <v-slide-group-item v-for="tshirt in newArrivalTshirts" :key="tshirt.id">
-            <v-card class="mx-3 rounded-lg elevation-2 hover-lift " :to="tshirt.link" width="280">
-              <v-img
-                :alt="tshirt.name"
-                cover
-                height="250px"
-                :src="tshirt.image"
-              />
-              <v-card-title class="font-weight-medium bg">{{ tshirt.name }}</v-card-title>
-              <v-card-subtitle class="text-caption text-grey-darken-1">{{ tshirt.category }}</v-card-subtitle>
-              <v-card-text class="d-flex justify-space-between align-center">
-                <span class="text-h6 font-weight-bold text-orange-darken-3">{{ tshirt.price }} TL</span>
-                <v-btn color="#1A2F4B" icon size="small">
-                  <v-icon>mdi-cart-plus</v-icon>
-                </v-btn>
-              </v-card-text>
-            </v-card>
-          </v-slide-group-item>
-        </v-slide-group>
-        <v-spacer />
+        <div class="d-flex align-center justify-center">
+          <!-- Prev -->
+          <v-btn
+            class="mx-2 rounded-circle elevation-3"
+            color="#1A2F4B"
+            :disabled="page === 0"
+            icon
+            size="large"
+            @click="prevPage"
+          >
+            <v-icon size="28">mdi-chevron-left</v-icon>
+          </v-btn>
+
+          <!-- Kartlar -->
+          <v-window v-model="page" class="flex-grow-1">
+            <v-window-item
+              v-for="(group, i) in pages"
+              :key="i"
+              :value="i"
+            >
+              <div class="d-flex justify-center flex-wrap">
+                <v-card
+                  v-for="tshirt in group"
+                  :key="tshirt.id"
+                  class="mx-3 my-2 rounded-xl elevation-4"
+                  height="400"
+                  :width="cardWidth"
+                >
+                  <v-img
+                    contain
+                    height="250"
+                    :src="tshirt.image"
+                  />
+                  <v-card-text class="pa-4">
+                    <div class="d-flex justify-space-between align-start mb-2">
+                      <div>
+                        <v-card-title class="pa-0 text-body-1 font-weight-bold">
+                          {{ tshirt.name }}
+                        </v-card-title>
+                        <v-card-subtitle class="pa-0 mt-1 text-caption text-grey-darken-1">
+                          {{ tshirt.category }}
+                        </v-card-subtitle>
+                      </div>
+                      <span class="text-h6 font-weight-bold text-orange-darken-3">
+                        {{ tshirt.price }} TL
+                      </span>
+                    </div>
+                    <v-btn block class="mt-2" color="#1A2F4B" variant="flat">
+                      Sepete Ekle
+                    </v-btn>
+                  </v-card-text>
+                </v-card>
+              </div>
+            </v-window-item>
+          </v-window>
+
+          <!-- Next -->
+          <v-btn
+            class="mx-2 rounded-circle elevation-3"
+            color="#1A2F4B"
+            :disabled="page >= pages.length - 1"
+            icon
+            size="large"
+            @click="nextPage"
+          >
+            <v-icon size="28">mdi-chevron-right</v-icon>
+          </v-btn>
+        </div>
       </v-container>
     </v-sheet>
+
   </v-container>
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
   import { useRouter } from 'vue-router'
 
+  const page = ref(0)
+  const perPage = ref(5) // default masaüstü
   const router = useRouter()
+
+  // Responsive perPage ayarı
+  function updatePerPage () {
+    const width = window.innerWidth
+    if (width < 600) {
+      perPage.value = 1
+    } else if (width < 960) {
+      perPage.value = 4
+    } else {
+      perPage.value = 6
+    }
+  }
+
+  onMounted(() => {
+    updatePerPage()
+    window.addEventListener('resize', updatePerPage)
+  })
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', updatePerPage)
+  })
 
   // Öne çıkan ler için örnek veri (öncekiyle aynı kaldı)
   const featuredTshirts = ref([
@@ -176,64 +216,51 @@
   ])
 
   // Yeni Gelen ler için örnek veri
-  const newArrivalTshirts = ref([
-    {
-      id: 7,
-      name: 'Anime Temalı ',
-      category: 'Unisex',
-      price: '289.90',
-      image: 'https://i.imgur.com/y1vO0xO.jpeg',
-      link: '/products/7',
-    },
-    {
-      id: 8,
-      name: 'Geometrik Desen',
-      category: 'Erkek',
-      price: '259.90',
-      image: 'https://i.imgur.com/Z4w0M0n.jpeg',
-      link: '/products/8',
-    },
-    {
-      id: 9,
-      name: 'Doğa Çizimli',
-      category: 'Kadın',
-      price: '229.90',
-      image: 'https://i.imgur.com/V7R3h9B.jpeg',
-      link: '/products/9',
-    },
-    {
-      id: 10,
-      name: 'Pop Art',
-      category: 'Unisex',
-      price: '299.90',
-      image: 'https://i.imgur.com/L3r0kQy.jpeg',
-      link: '/products/10',
-    },
-    {
-      id: 11,
-      name: 'Uzay Temalı',
-      category: 'Unisex',
-      price: '319.90',
-      image: 'https://i.imgur.com/cE0124g.jpeg',
-      link: '/products/11',
-    },
-    {
-      id: 12,
-      name: 'Retro Oyun',
-      category: 'Erkek',
-      price: '279.90',
-      image: 'https://i.imgur.com/qU3g15F.jpeg',
-      link: '/products/12',
-    },
-    {
-      id: 13,
-      name: 'Minimalist Çizgi',
-      category: 'Kadın',
-      price: '209.90',
-      image: 'https://i.imgur.com/Gj3H0Qc.jpeg',
-      link: '/products/13',
-    },
-  ])
+  const newArrivalTshirts = [
+    { id: 1, name: 'T-Shirt 1', price: 199, category: 'Erkek', image: 'https://via.placeholder.com/250' },
+    { id: 2, name: 'T-Shirt 2', price: 249, category: 'Kadın', image: 'https://via.placeholder.com/250' },
+    { id: 3, name: 'T-Shirt 3', price: 299, category: 'Unisex', image: 'https://via.placeholder.com/250' },
+    { id: 4, name: 'T-Shirt 4', price: 179, category: 'Erkek', image: 'https://via.placeholder.com/250' },
+    { id: 5, name: 'T-Shirt 5', price: 159, category: 'Kadın', image: 'https://via.placeholder.com/250' },
+    { id: 6, name: 'T-Shirt 6', price: 189, category: 'Unisex', image: 'https://via.placeholder.com/250' },
+    { id: 7, name: 'T-Shirt 7', price: 229, category: 'Erkek', image: 'https://via.placeholder.com/250' },
+    { id: 8, name: 'T-Shirt 8', price: 199, category: 'Kadın', image: 'https://via.placeholder.com/250' },
+    { id: 9, name: 'T-Shirt 9', price: 269, category: 'Unisex', image: 'https://via.placeholder.com/250' },
+    { id: 1, name: 'T-Shirt 1', price: 199, category: 'Erkek', image: 'https://via.placeholder.com/250' },
+    { id: 2, name: 'T-Shirt 2', price: 249, category: 'Kadın', image: 'https://via.placeholder.com/250' },
+    { id: 3, name: 'T-Shirt 3', price: 299, category: 'Unisex', image: 'https://via.placeholder.com/250' },
+    { id: 4, name: 'T-Shirt 4', price: 179, category: 'Erkek', image: 'https://via.placeholder.com/250' },
+    { id: 5, name: 'T-Shirt 5', price: 159, category: 'Kadın', image: 'https://via.placeholder.com/250' },
+    { id: 6, name: 'T-Shirt 6', price: 189, category: 'Unisex', image: 'https://via.placeholder.com/250' },
+    { id: 7, name: 'T-Shirt 7', price: 229, category: 'Erkek', image: 'https://via.placeholder.com/250' },
+    { id: 8, name: 'T-Shirt 8', price: 199, category: 'Kadın', image: 'https://via.placeholder.com/250' },
+    { id: 9, name: 'T-Shirt 9', price: 269, category: 'Unisex', image: 'https://via.placeholder.com/250' },
+  ]
+
+  // Kartları perPage’e göre grupluyoruz
+  const pages = computed(() => {
+    const arr = []
+    for (let i = 0; i < newArrivalTshirts.length; i += perPage.value) {
+      arr.push(newArrivalTshirts.slice(i, i + perPage.value))
+    }
+    return arr
+  })
+
+  // Kart genişliği hesaplama
+  const cardWidth = computed(() => {
+    if (perPage.value === 2) return 300
+    if (perPage.value === 3) return 260
+    return 250
+  })
+
+  function prevPage () {
+    if (page.value > 0) page.value--
+  }
+
+  function nextPage () {
+    if (page.value < pages.value.length - 1) page.value++
+  }
+
 </script>
 
 <style scoped>
@@ -284,4 +311,13 @@
 .text-orange-darken-3 { /* Fiyatlar ve vurgu renkleri için */
   color: #FF6F00 !important;
 }
+
+.hover-lift {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 </style>
