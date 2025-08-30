@@ -2,10 +2,10 @@
   <v-app>
     <v-system-bar class="text-black mb-14 position-fixed" color="#4ECDC4">
       <v-container class="d-flex justify-center py-1">
-        <span class="text-subtitle-2 font-weight-bold shipping-message">
-          <v-icon class="mr-2" size="x-small">mdi-truck-fast</v-icon>
-          2500 TL ve Üzeri Siparişlerinizde KARGO ÜCRETSİZ!
-        </span>
+    <span class="text-subtitle font-weight-bold shipping-message">
+      <v-icon class="mr-2" size="small">mdi-truck-fast</v-icon>
+      2500 TL ve Üzeri Siparişlerinizde KARGO ÜCRETSİZ!
+    </span>
       </v-container>
     </v-system-bar>
 
@@ -234,5 +234,31 @@
   flex-direction: column;
   align-items: flex-start; /* Logoyu sola yasla */
   line-height: 1.2; /* Satır aralığını ayarla */
+}
+
+/* Varsayılan font boyutu (masaüstü için) */
+.shipping-message {
+  font-size: 16px;
+}
+
+/* 768px ve altı ekranlar için (tabletler) */
+@media screen and (max-width: 768px) {
+  .shipping-message {
+    font-size: 14px; /* Fontu biraz küçült */
+  }
+}
+
+/* 576px ve altı ekranlar için (mobil cihazlar) */
+@media screen and (max-width: 576px) {
+  .shipping-message {
+    font-size: 12px; /* Fontu mobil için daha da küçült */
+  }
+}
+
+/* 375px ve altı çok küçük ekranlar için */
+@media screen and (max-width: 375px) {
+  .shipping-message {
+    font-size: 10px; /* Metnin sığmasını sağlamak için çok küçük bir değer */
+  }
 }
 </style>
