@@ -2,8 +2,8 @@
   <v-app>
     <v-system-bar class="text-black mb-14 position-fixed" color="#4ECDC4">
       <v-container class="d-flex justify-center py-1">
-        <span class="text-subtitle-2 font-weight-bold">
-          <v-icon class="mr-2" size="small">mdi-truck-fast</v-icon>
+        <span class="text-subtitle-2 font-weight-bold shipping-message">
+          <v-icon class="mr-2" size="x-small">mdi-truck-fast</v-icon>
           2500 TL ve Üzeri Siparişlerinizde KARGO ÜCRETSİZ!
         </span>
       </v-container>
@@ -162,7 +162,6 @@
           <v-list-item title="Yedek Parça" to="/products/3d-baskilar/yedek-parca" />
           <v-list-item title="Tüm 3D Baskılar" to="/products/3d-baskilar" />
         </v-list-group>
-
 
         <v-divider />
 
