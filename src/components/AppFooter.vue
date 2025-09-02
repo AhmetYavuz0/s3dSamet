@@ -78,7 +78,7 @@
               alt="Ortalı resim"
               class="rounded-lg"
               max-width="400"
-              src="https://i.imgur.com/GQZDO1J.png"
+              src=""
             />
           </v-container>
         </v-col>
@@ -98,10 +98,10 @@
 
   const quickLinks = ref([
     { title: 'Hakkımızda', to: '/about' },
-    { title: 'Mesafeli Satış Sözleşmesi', to: '/sellinginfo' },
+    { title: 'Mesafeli Satış Sözleşmesi', to: '/policies/distance-sale-contract' },
     { title: 'İptal ve İade Şartları', to: '/return' },
     { title: 'Sıkça Sorulan Sorular', to: '/faq' },
-    { title: 'Gizlilik Politikası', to: '/privacy' },
+    { title: 'Gizlilik Politikası', to: '/policies/privacy' },
   ])
 
   const socialIcons = ref([
